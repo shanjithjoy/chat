@@ -1,5 +1,8 @@
 package com.niit.controller;
 
+import java.util.List;
+
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.ModelAttribute;
@@ -7,9 +10,13 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 
 import com.niit.model.Blog;
+import com.niit.services.BlogService;
+import com.sun.xml.internal.ws.api.ServiceSharedFeatureMarker;
 
 @Controller
 public class Mycontroller {
+	@Autowired
+	BlogService blogService;
 @RequestMapping("/")
 public String hi()
 {
@@ -41,8 +48,11 @@ public String aboutus()
 return "aboutus";	
 }
 @RequestMapping("/blog")
-public String blog(@ModelAttribute("blo") Blog blo)
+public String blog(@ModelAttribute("blo") Blog blo,Model m)
 {
+	List<Blog> blogLt=blogService.getList();
+	m.addAttribute("blogList", blogLt);
 return "blog";	
 }
+
 }

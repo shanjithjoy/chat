@@ -121,7 +121,7 @@
 									<h3 class="panel-title"><span class="fa fa-pencil-square-o"></span>express yourself<small></small></h3>
 									</div>
 									<div class="panel-body">
-									<form:form action="/blog1" commandName="blo" role="form" class="lead">
+									<form:form action="./blog1" commandName="blo" role="form" class="lead">
 										<div class="row">
 										<%-- <div class="col-xs-12 col-sm-12 col-md-12">
 												<div class="form-group">
@@ -148,7 +148,7 @@
 												<div class="form-group">
 													<label>blog</label>
 													
-													<form:textarea cols="48" path="blogContent"  class="form-control input-md" rows="8" name="phone"></form:textarea>
+													<form:input cols="48" path="blogContent"  class="form-control input-md" rows="8"/>
 												</div>
 												</div>
 											
@@ -166,7 +166,7 @@
 										<input type="reset" value="cancel" class="btn btn-primary btn-lg btn-block">
 										
 										
-										<p class="lead-footer">* not member yet?</p>
+										<p class="lead-footer">*not member yet?</p>
 									</div>
 							
 									</form:form>
@@ -176,11 +176,13 @@
 						</div>
 						</div>
 				
-			
+			<br>
 			<div class="panel-body">
-	<h4> Shanjith </h4>
-<p>hi every one lets have fun in this chat club</p>
-<p>                                  21/10/2016</p>
+			<c:forEach var="b"  items="${blogList}">
+	<a href="blogpage?id=${b.blogId}"><h4> ${b.blogname} </h4>
+<h5>${b.blogTitle}</h5>
+<p>                                  ${b.creationDate}</p></a>
+</c:forEach>
 </div>
 		
 	</div>

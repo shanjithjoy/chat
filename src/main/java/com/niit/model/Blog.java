@@ -18,7 +18,6 @@ public class Blog {
 	private String blogname;
 	private String blogTitle;
 	private String blogContent;
-	@Transient
 	private Date creationDate;
 	
 	public String getBlogtag() {
